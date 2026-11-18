@@ -78,6 +78,8 @@ h1, h2, h3, h4 {
 h1 { font-size: 2.75rem; font-weight: 900; margin-bottom: var(--spacing-md); }
 h2 { font-size: 2rem;    font-weight: 700; margin-bottom: var(--spacing-md); }
 h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+h5 { color: var(--color-primary); font-size: 1.25rem; font-weight: 700; margin-bottom: var(--spacing-sm); }
+
 
 p {
     margin-bottom: var(--spacing-md);
