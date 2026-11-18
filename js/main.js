@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (navToggle && nav) {
         const setOpen = (open) => {
-            nav.classList.toggle("is-open", open);
+            nav.classList.toggle("open", open);
             navToggle.setAttribute("aria-expanded", String(open));
             navToggle.setAttribute(
                 "aria-label",
@@ -16,32 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
     
-        navToggle.addEventListener("click", (event) => {
-            event.stopPropagation();                       
-            const isOpen = nav.classList.toggle("is-open");
-            navToggle.setAttribute("aria-expanded", String(isOpen));
-            navToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation menu" : "Open navigation menu"
-            );
-        });
+         navToggle.addEventListener("click", () => {
+        const isOpen = nav.classList.contains("is-open");
+        setOpen(!isOpen);
+    });
 
-    
-        nav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => setOpen(false));
-        });
-
-        // Close when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!nav.contains(event.target) && !navToggle.contains(event.target)) {
-                setOpen(false);
-            }
-        });
-    
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") setOpen(false);
-        });
-    }
+    // Optional: close on Escape
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
+    });
+}
 
     document.querySelectorAll(".menu-card").forEach((card) => {
         const title = card.querySelector("h3");
